@@ -1,0 +1,23 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    app: metrics-server-prom
+  name: metrics-server-prom
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: metrics-server-prom
+  template:
+    metadata:
+      labels:
+        app: metrics-server-prom
+    spec:
+      containers:
+      - name: metrics-server-prom
+        image: jktu/metrics-server-prom:latest
+        imagePullPolicy: IfNotPresent
+        resources:
+          requests:
+            cpu: 20m

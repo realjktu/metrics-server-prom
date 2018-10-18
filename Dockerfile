@@ -44,6 +44,7 @@ ENV PIP_RUN_DEPS \
 USER ${USER}
 RUN set -x \
 	&& mkdir /home/${USER}/transform \
+	&& mkdir /home/${USER}/.kube \
 	&& cd /home/${USER}/transform \
 	&& virtualenv transformenv \
 	&& . transformenv/bin/activate \

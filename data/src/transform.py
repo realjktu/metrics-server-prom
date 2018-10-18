@@ -108,6 +108,10 @@ def val2base(string):
     val = re.search('^([0-9]+)Ti$', string, re.IGNORECASE)
     if val and val.group(1):
         return int(val.group(1)) * (1024*1024*1024*1024)
+    # Transform nano to none
+    val = re.search('^([0-9]+)n$', string, re.IGNORECASE)
+    if val and val.group(1):
+        return int(val.group(1)) / 1000000000
 
     # Transform hours, minutes and seconds into seconds
     val = re.search('^(([0-9]+)\s*h\s*)?(([0-9]+)\s*m\s*)?(([0-9]+)\s*s\s*)?$', string, re.IGNORECASE)
